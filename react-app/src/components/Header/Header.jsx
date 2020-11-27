@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import styles from "./Header.module.scss";
+import { getTyres } from "../../services/apiService";
 
 const Header = (props) => {
-  const { setSearchString } = props;
+  const { setTyreData } = props;
 
   const [searchInputValue, setSearchInputValue] = useState("")
    
@@ -10,8 +11,8 @@ const Header = (props) => {
     setSearchInputValue(e.target.value)
   }
 
-  const handleSearchClick = () => {
-    setSearchString(searchInputValue);
+  const handleSearchClick = async () => {
+    setTyreData(await getTyres(searchInputValue));
   }
 
   return (
