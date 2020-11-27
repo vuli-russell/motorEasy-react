@@ -19,4 +19,5 @@ describe("app Tests", () =>{
     expect(appComponent.find(Header).length).toBe(1);
     expect(appComponent.find(TyreList).length).toBe(1);
   })
+  
 });
