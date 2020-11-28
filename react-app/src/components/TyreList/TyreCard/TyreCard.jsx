@@ -1,10 +1,12 @@
 import React from "react";
 import styles from "./TyreCard.module.scss";
 
-const TyreCard = () => {
+const TyreCard = (props) => {
+  const { brand, size } = props.tyre
   return (
     <>
-      <p>TyreCard works</p>
+      <h1>{brand}</h1>
+      <h1>{size}</h1>
     </>
   );
 };
