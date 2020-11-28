@@ -1,19 +1,34 @@
 import Header from "./Header";
 import { shallow } from "enzyme";
-
+import * as apiService from "../../services/apiService";
 
 describe("app Tests", () =>{
   
+  const mockTyres = [
+    {
+        brand: "pirelli",
+        size: 10
+    },
+    {
+        brand: "firestone",
+        size: 12
+    },
+    {
+        brand: "pirelli",
+        size: 15
+    }
+  ] 
+
   let headerComponent;
   const setTyreDataMock = jest.fn();
-  // const getTyresMock = jest.fn();
-  const testSearchString = "test"
-
-  jest.mock("../../services/apiService",() => ({getTyresMock: jest.fn()}))
+  const testSearchString = "test";
+  apiService.getTyres = jest.fn();
 
   beforeEach(()=>{
     headerComponent = shallow(<Header setTyreData={setTyreDataMock}/>);
     setTyreDataMock.mockClear();
+    apiService.getTyres.mockClear();
+    apiService.getTyres.mockReturnValue(mockTyres);
   });
   
   it("should render",() => {
@@ -25,9 +40,11 @@ describe("app Tests", () =>{
     expect(headerComponent.find("input").length).toBe(1);
   });
 
-  it("should call function passed as props with data from getTyres called with input box value on button click",() =>{
+  it("should call getTyres called with input box value on button click", async () =>{
+    expect(apiService.getTyres).toHaveBeenCalledTimes(0)
     headerComponent.find("input").simulate("change", {target:{value: testSearchString}})
-    headerComponent.find("button").simulate("click")
-    expect(setTyreDataMock).toHaveBeenCalledWith(testSearchString)
+    await headerComponent.find("button").simulate("click")
+    expect(apiService.getTyres).toHaveBeenCalledWith(testSearchString);
+    expect(setTyreDataMock).toHaveBeenCalledWith(mockTyres);
   });
 });
