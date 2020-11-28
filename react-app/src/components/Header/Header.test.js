@@ -1,53 +1,20 @@
 import Header from "./Header";
 import { shallow } from "enzyme";
-import * as apiService from "../../services/apiService";
 
 describe("Header Tests", () =>{
-  
-  const mockTyres = [
-    {
-      id: 1,
-      brand: "pirelli",
-      size: 10
-    },
-    {
-      id: 2,
-      brand: "firestone",
-      size: 12
-    },
-    {
-      id: 3,
-      brand: "pirelli",
-      size: 15
-    }
-  ]
 
   let headerComponent;
-  const setTyreDataMock = jest.fn();
-  const testSearchString = "test";
-  apiService.getTyres = jest.fn();
 
   beforeEach(()=>{
-    headerComponent = shallow(<Header setTyreData={setTyreDataMock}/>);
-    setTyreDataMock.mockClear();
-    apiService.getTyres.mockClear();
-    apiService.getTyres.mockReturnValue(mockTyres);
+    headerComponent = shallow(<Header />);
   });
   
   it("should render",() => {
     expect(headerComponent).toBeTruthy();
   });
 
-  it("should render title, search box and search icon", () =>{
+  it("should render title", () =>{
     expect(headerComponent.find("h1").length).toBe(1);
-    expect(headerComponent.find("input").length).toBe(1);
-  });
-
-  it("should call getTyres called with input box value on button click", async () =>{
-    expect(apiService.getTyres).toHaveBeenCalledTimes(0)
-    headerComponent.find("input").simulate("change", {target:{value: testSearchString}})
-    await headerComponent.find("button").simulate("click")
-    expect(apiService.getTyres).toHaveBeenCalledWith(testSearchString);
-    expect(setTyreDataMock).toHaveBeenCalledWith(mockTyres);
+    expect(headerComponent.text()).toBe("Tyre List");
   });
 });

@@ -23,11 +23,13 @@ describe("Tyre List Tests", () =>{
     }
   ]
   
-  const setTyreDataMock = jest.fn()
+  const setCurrentPageMock = jest.fn();
+
+  const currentPageMock = 1;
 
   beforeEach(()=>{
-    tyreListComponent = shallow(<TyreList tyreData={mockTyres} setTyreData={setTyreDataMock} />);
-    setTyreDataMock.mockClear();
+    tyreListComponent = shallow(<TyreList tyreData={mockTyres} currentPage={currentPageMock} setCurrentPage={setCurrentPageMock} />);
+    setCurrentPageMock.mockClear();
   });
   
   it("should render",() => {
@@ -35,14 +37,21 @@ describe("Tyre List Tests", () =>{
   });
 
   it("should contain no cards, and a message saying No Tyres Found if no tyres are passed",() => {
-    tyreListComponent = shallow(<TyreList tyreData={[]} setTyreData={setTyreDataMock} />);
+    tyreListComponent = shallow(<TyreList tyreData={[]} currentPage={currentPageMock} setCurrentPage={setCurrentPageMock} />);
     expect(tyreListComponent.find(TyreCard).length).toBe(0);
     expect(tyreListComponent.find("p").text()).toBe("No Tyres Found")
   })
 
   it("should contain 1 card component for each tyre passed to it in tyreData",() => {
     expect(tyreListComponent.find(TyreCard).length).toBe(mockTyres.length)
-    tyreListComponent = shallow(<TyreList tyreData={[...mockTyres,...mockTyres]} setTyreData={setTyreDataMock} />);
+    tyreListComponent = shallow(<TyreList tyreData={[...mockTyres,...mockTyres]} currentPage={currentPageMock} setCurrentPage={setCurrentPageMock} />);
     expect(tyreListComponent.find(TyreCard).length).toBe(mockTyres.length * 2)
   })
+
+  it("should call setCurrentPage with next page on load more click",  () =>{
+    expect(setCurrentPageMock).toHaveBeenCalledTimes(0);
+    tyreListComponent.find("button").simulate("click");
+    expect(setCurrentPageMock).toHaveBeenCalledTimes(1);
+    expect(setCurrentPageMock).toHaveBeenCalledWith(currentPageMock + 1); 
+  });
 });

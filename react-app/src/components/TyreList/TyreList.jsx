@@ -3,10 +3,21 @@ import styles from "./TyreList.module.scss";
 import TyreCard from "./TyreCard";
 
 const TyreList = (props) => {
-  const { tyreData } = props;
+  const { tyreData, currentPage, setCurrentPage } = props;
+
+  const handleLoadMoreClick = () => {
+    setCurrentPage(currentPage + 1);
+  }
+
   return (
     <div>
-      {tyreData.length ? tyreData.map(tyre => <TyreCard key={tyre.id} tyre={tyre} />) : <p>No Tyres Found</p>}
+      {tyreData.length ? 
+        <>
+          {tyreData.map(tyre => <TyreCard key={tyre.id} tyre={tyre} />)}
+          <button onClick={handleLoadMoreClick}>Load More</button>
+        </>
+      :
+        <p>No Tyres Found</p>}
     </div>
   );
 };

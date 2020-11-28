@@ -2,6 +2,7 @@ import App from "./App";
 import { shallow } from "enzyme";
 import Header from "./components/Header";
 import TyreList from "./components/TyreList";
+import Search from "./components/Search";
 
 describe("App Tests", () =>{
   
@@ -17,6 +18,7 @@ describe("App Tests", () =>{
 
   it("should render one Header and one Tyre List component", () =>{
     expect(appComponent.find(Header).length).toBe(1);
+    expect(appComponent.find(Search).length).toBe(1);
     expect(appComponent.find(TyreList).length).toBe(1);
   });
 });
