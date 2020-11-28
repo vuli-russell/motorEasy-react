@@ -10,10 +10,16 @@ const mongoClient = mongodb.MongoClient;
 export const mongoGet = async(searchStr,page,pageSize) => {
     const client = await mongoClient.connect(connectionString, { useUnifiedTopology: true })
     const cursor = await client.db("motorEasyTechTest").collection("tyres")
-        .find({title: new RegExp(searchStr,"i")})
+        .find({$or:
+            [
+                {title: new RegExp(searchStr,"i")},
+                {size: new RegExp(searchStr,"i")}
+            ]
+        })
         //should be a sort here to ensure same order each time
         .skip((page-1)*pageSize)
         .limit(3)
         .toArray()
+    await client.close()
     return cursor
 }
