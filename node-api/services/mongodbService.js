@@ -10,7 +10,7 @@ const mongoClient = mongodb.MongoClient;
 export const mongoGet = async(searchStr,page,pageSize) => {
     try {
         const client = await mongoClient.connect(connectionString, { useUnifiedTopology: true })
-        const response = await client.db("motorEasyTechTest").collection("tyres")
+        const response = await client.db("motorEasyTechTest").collection("tyreInfo")
             .find({$or:
                 [
                     {title: new RegExp(searchStr,"i")},
