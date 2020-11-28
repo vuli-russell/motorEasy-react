@@ -12,6 +12,7 @@ const pageSize = 3;
 app.get("/getTyres", async (request,response) => {
     let page = parseInt(request.query.p);
     const searchStr = request.query.q;
+
     if(page){
         const data = await mongoGet(searchStr,page,pageSize)
         if(data==="ServerError"){
@@ -25,4 +26,4 @@ app.get("/getTyres", async (request,response) => {
     
 })
 
-app.listen(8080);
+app.listen(process.env.PORT||8080);
