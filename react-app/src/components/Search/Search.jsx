@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./Search.module.scss";
 
 const Search = (props) => {
-  const { setSearchStr, setHasSearched } = props;
+  const { setSearchStr, setHasSearched, setCurrentPage } = props;
 
   const [searchInputValue, setSearchInputValue] = useState("")
    
@@ -13,6 +13,7 @@ const Search = (props) => {
   const handleSearchClick = () => {
     setSearchStr(searchInputValue)
     setHasSearched(true)
+    setCurrentPage(1)
   }
 
   return (

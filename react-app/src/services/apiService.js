@@ -1,47 +1,18 @@
-// import axios from "axios";
+import axios from "axios";
+import dotenv from "dotenv";
 
-//DUMMY BEFORE API IS BULT
+dotenv.config()
 
-const tyres = [
-    {
-        id: 1,
-        brand: "pirelli",
-        size: 10
-    },
-    {
-        id: 2,
-        brand: "firestone",
-        size: 12
-    },
-    {
-        id: 3,
-        brand: "pirelli",
-        size: 15
-    },
-    {
-        id: 4,
-        brand: "avon",
-        size: 11
-    },
-    {
-        id: 5,
-        brand: "michelin",
-        size: 17
-    },
-    {
-        id: 6,
-        brand: "goodYear",
-        size: 18
+export const getTyres = async (searchStr,page=1) => {
+    try{
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/getTyres?q=${searchStr}&p=${page}`)
+        if(response.status===200){
+            return response.data.length ? response.data : "empty";
+        }else {
+            return "error"
+        }
+    } catch(e){
+        return "error"
     }
-]
 
-
-export const getTyres = (searchStr,page=1) => {
-    const response = new Promise((resolve,reject) => {
-        setTimeout(()=>{
-            resolve(tyres.slice((page*3)-3,page*3))
-        },2000)
-    })
-    return response;
-    
 }

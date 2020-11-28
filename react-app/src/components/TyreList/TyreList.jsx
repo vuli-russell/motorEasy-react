@@ -13,7 +13,7 @@ const TyreList = (props) => {
     <div>
       {tyreData.length ? 
         <>
-          {tyreData.map(tyre => <TyreCard key={tyre.id} tyre={tyre} />)}
+          {tyreData.map(tyre => <TyreCard key={tyre._id} tyre={tyre} />)}
           <button onClick={handleLoadMoreClick}>Load More</button>
         </>
       :

@@ -7,17 +7,17 @@ describe("Tyre List Tests", () =>{
   let tyreListComponent;
    const mockTyres = [
     {
-      id: 1,
+      _id: 1,
       brand: "pirelli",
       size: 10
     },
     {
-      id: 2,
+      _id: 2,
       brand: "firestone",
       size: 12
     },
     {
-      id: 3,
+      _id: 3,
       brand: "pirelli",
       size: 15
     }

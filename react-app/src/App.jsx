@@ -12,21 +12,31 @@ function App() {
   const [ hasSearched, setHasSearched ] = useState(false)
 
   useEffect(() => {
-    if (hasSearched){
-      getTyres(searchStr,currentPage).then(data => {setTyreData(data)})
+    if(hasSearched){
+      getTyres(searchStr,currentPage).then(data => {
+        switch(data){
+          case "error":
+            alert("Error Fetching Data");
+            break;
+          case "empty":
+            //if page = 1, no tyres found
+            alert("No more Items To Load");
+            break;
+          default:
+            if(currentPage===1){
+              setTyreData(data)
+            }else {
+              setTyreData(t => [...t,...data])
+            }
+        }
+      })
     }
-  }, [searchStr])
-
-  useEffect(() => {
-    if (hasSearched){
-      getTyres(searchStr,currentPage).then(data => {setTyreData([...tyreData,...data])})
-    }
-  }, [currentPage])
+  }, [searchStr,currentPage])
 
   return (
     <>
       <Header />
-      <Search setSearchStr={setSearchStr} setHasSearched={setHasSearched}/>
+      <Search setSearchStr={setSearchStr} setHasSearched={setHasSearched} setCurrentPage={setCurrentPage}/>
       <TyreList tyreData={tyreData} currentPage={currentPage} setCurrentPage={setCurrentPage} />
     </>
   );
