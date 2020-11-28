@@ -4,7 +4,7 @@ import Header from "./components/Header";
 import TyreList from "./components/TyreList";
 
 function App() {
-  const [ tyreData, setTyreData ] = useState(null)
+  const [ tyreData, setTyreData ] = useState([])
 
   return (
     <>

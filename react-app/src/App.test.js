@@ -3,7 +3,7 @@ import { shallow } from "enzyme";
 import Header from "./components/Header";
 import TyreList from "./components/TyreList";
 
-describe("app Tests", () =>{
+describe("App Tests", () =>{
   
   let appComponent;
 

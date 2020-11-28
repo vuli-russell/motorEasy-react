@@ -2,22 +2,25 @@ import Header from "./Header";
 import { shallow } from "enzyme";
 import * as apiService from "../../services/apiService";
 
-describe("app Tests", () =>{
+describe("Header Tests", () =>{
   
   const mockTyres = [
     {
-        brand: "pirelli",
-        size: 10
+      id: 1,
+      brand: "pirelli",
+      size: 10
     },
     {
-        brand: "firestone",
-        size: 12
+      id: 2,
+      brand: "firestone",
+      size: 12
     },
     {
-        brand: "pirelli",
-        size: 15
+      id: 3,
+      brand: "pirelli",
+      size: 15
     }
-  ] 
+  ]
 
   let headerComponent;
   const setTyreDataMock = jest.fn();

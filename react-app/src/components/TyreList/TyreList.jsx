@@ -1,11 +1,13 @@
 import React from "react";
 import styles from "./TyreList.module.scss";
+import TyreCard from "./TyreCard";
 
-const TyreList = () => {
+const TyreList = (props) => {
+  const { tyreData } = props;
   return (
-    <>
-      <p>TyreList works</p>
-    </>
+    <div>
+      {tyreData.length ? tyreData.map(tyre => <TyreCard key={tyre.id} tyre={tyre} />) : <p>No Tyres Found</p>}
+    </div>
   );
 };
 
