@@ -14,20 +14,18 @@ function App() {
   useEffect(() => {
     if(hasSearched){
       getTyres(searchStr,currentPage).then(data => {
-        switch(data){
-          case "error":
-            alert("Error Fetching Data");
-            break;
-          case "empty":
-            //if page = 1, no tyres found
-            alert("No more Items To Load");
-            break;
-          default:
-            if(currentPage===1){
-              setTyreData(data)
-            }else {
-              setTyreData(t => [...t,...data])
-            }
+
+        if(data==="error"){
+          alert("Error Fetching Data");
+        }else {
+          if(data.length===0){
+            alert(currentPage===1 ? "No Tyres Found" : "No more Items To Load");
+          }
+          if(currentPage===1){
+            setTyreData(data)
+          }else {
+            setTyreData(t => [...t,...data])
+          }
         }
       })
     }

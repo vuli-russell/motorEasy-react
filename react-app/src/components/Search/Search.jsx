@@ -10,7 +10,8 @@ const Search = (props) => {
     setSearchInputValue(e.target.value)
   }
 
-  const handleSearchClick = () => {
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
     setSearchStr(searchInputValue)
     setHasSearched(true)
     setCurrentPage(1)
@@ -18,12 +19,14 @@ const Search = (props) => {
 
   return (
     <div>
-      <label>
-        Search by size or name
-        <input type="text" onChange={handleSearchInput} />
-      </label>
-      {/* might cahnge search to be on change, depending on performance */}
-      <button onClick={handleSearchClick} >Search</button>
+      <form onSubmit={handleFormSubmit}>
+        <label>
+          Search by size or name
+          <input type="text" onChange={handleSearchInput} />
+        </label>
+        {/* might cahnge search to be on change, depending on performance */}
+        <input type="submit" value="Search"/>
+      </form>
     </div>
   );
 };

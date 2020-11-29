@@ -7,7 +7,7 @@ export const getTyres = async (searchStr,page=1) => {
     try{
         const response = await axios.get(`${process.env.REACT_APP_API_URL}/getTyres?q=${searchStr}&p=${page}`)
         if(response.status===200){
-            return response.data.length ? response.data : "empty";
+            return response.data;
         }else {
             return "error"
         }

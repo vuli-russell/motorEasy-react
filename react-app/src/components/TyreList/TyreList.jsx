@@ -10,14 +10,16 @@ const TyreList = (props) => {
   }
 
   return (
-    <div>
+    <div className={styles.tyreList}>
       {tyreData.length ? 
         <>
-          {tyreData.map(tyre => <TyreCard key={tyre._id} tyre={tyre} />)}
-          <button onClick={handleLoadMoreClick}>Load More</button>
+          <div className={styles.cardGallery}>
+            {tyreData.map(tyre => <TyreCard key={tyre._id} tyre={tyre} />)}
+          </div>
+          <button className={styles.button} onClick={handleLoadMoreClick}>Load More</button>
         </>
       :
-        <p>No Tyres Found</p>}
+        <h2>No Tyres Found, Please try a different search</h2>}
     </div>
   );
 };

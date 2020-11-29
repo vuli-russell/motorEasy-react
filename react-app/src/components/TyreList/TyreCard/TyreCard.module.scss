@@ -1,4 +1,4 @@
-@import "../../../assets/styles/variables";
+@import "../../../assets/styles/styles.scss";
 
 .tyreCard {
     background-color: rgb(236, 236, 236);
@@ -63,10 +63,7 @@
         justify-content: center;
 
         a {
-            background-color: #F9D537;   
-            padding: $base-spacing;
-            margin: $base-spacing;
-            border-radius: 10px;
+            text-decoration: none;
         }
     }
 }

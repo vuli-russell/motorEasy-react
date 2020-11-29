@@ -5,11 +5,10 @@ import { faStar as faSolidStar } from "@fortawesome/free-solid-svg-icons";
 import { faStar as faOutlineStar } from "@fortawesome/free-regular-svg-icons";
 
 const TyreCard = (props) => {
-  // console.log(props.tyre)
   const { brand, size, image, amazon_link, model, price, title } = props.tyre;
   const rating = props.tyre.rating.match(/^\d\.\d/)[0];
 
-  //This feels liek a bad way to do this
+  //This feels like a bad way to do this
   const starsJSX = new Array(5).fill(null).map((e,i) => <FontAwesomeIcon key={i} icon={faSolidStar} />);
   
   const fullStarsJSX = (
@@ -40,7 +39,7 @@ const TyreCard = (props) => {
       </div>
       <h2>Size: {size}</h2>
       <div className={styles.amazonLink}>
-        <a href={amazon_link} target="_blank" rel="noopener noreferrer">Amazon Link</a>
+        <a className={styles.button} href={amazon_link} target="_blank" rel="noopener noreferrer">View on Amazon</a>
       </div>
       
     </div>
