@@ -16,9 +16,10 @@ describe("App Tests", () =>{
     expect(appComponent).toBeTruthy();
   });
 
-  it("should render one Header and one Tyre List component", () =>{
+  it("should render one Header and one Search Component", () =>{
     expect(appComponent.find(Header).length).toBe(1);
     expect(appComponent.find(Search).length).toBe(1);
-    expect(appComponent.find(TyreList).length).toBe(1);
   });
+
+  //use effect and api call functionality not tested
 });

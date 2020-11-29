@@ -23,9 +23,9 @@ describe("api Service Tests", () => {
         expect(await getTyres("mockSearchStr",1)).toEqual(mockOKData.data)
     })
 
-    it("should return string: empty if repsonse data is empty", async () => {
+    it("should return empty array if repsonse data is empty", async () => {
         axios.get.mockResolvedValue(mockEmptyData)
-        expect(await getTyres("mockSearchStr",1)).toEqual("empty")
+        expect(await getTyres("mockSearchStr",1)).toEqual([])
     })
 
     it("should return error if response status is not 200", async () => {

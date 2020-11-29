@@ -4,10 +4,16 @@ import { shallow } from "enzyme";
 describe("TyreCard Tests", () =>{
   
   let tyreCardComponent;
-  let tyre = {
-    id: 3,
-    brand: "pirelli",
-    size: 15
+  let tyre =  {
+    "_id": "5fc2d186c2fdef44a05cacf1",
+    "amazon_link": "amazonLink",
+    "price": "£73.31",
+    "size": "225/45Z17",
+    "model": "Cinturato P7",
+    "brand": "Pirelli",
+    "rating": "4.7 out of 5 stars",
+    "image": "imageSource",
+    "title": "Pirelli Cinturato P7"
   }
   
   beforeEach(()=>{

@@ -39,7 +39,7 @@ describe("Tyre List Tests", () =>{
   it("should contain no cards, and a message saying No Tyres Found if no tyres are passed",() => {
     tyreListComponent = shallow(<TyreList tyreData={[]} currentPage={currentPageMock} setCurrentPage={setCurrentPageMock} />);
     expect(tyreListComponent.find(TyreCard).length).toBe(0);
-    expect(tyreListComponent.find("p").text()).toBe("No Tyres Found")
+    expect(tyreListComponent.find("h2").text()).toBe("No Tyres Found, Please try a different search")
   })
 
   it("should contain 1 card component for each tyre passed to it in tyreData",() => {
