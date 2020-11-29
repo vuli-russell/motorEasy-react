@@ -9,23 +9,18 @@ const TyreCard = (props) => {
   const { brand, size, image, amazon_link, model, price, title } = props.tyre;
   const rating = props.tyre.rating.match(/^\d\.\d/)[0];
 
+  //This feels liek a bad way to do this
+  const starsJSX = new Array(5).fill(null).map((e,i) => <FontAwesomeIcon key={i} icon={faSolidStar} />);
+  
   const fullStarsJSX = (
     <div className={styles.fullStars} style={{width: `${rating}em`}}>
-      <FontAwesomeIcon icon={faSolidStar} />
-      <FontAwesomeIcon icon={faSolidStar} />
-      <FontAwesomeIcon icon={faSolidStar} />
-      <FontAwesomeIcon icon={faSolidStar} />
-      <FontAwesomeIcon icon={faSolidStar} />
+      {starsJSX}
     </div>
   )
 
   const emptyStarsJSX = (
     <div className={styles.emptyStars}>
-      <FontAwesomeIcon icon={faSolidStar} />
-      <FontAwesomeIcon icon={faSolidStar} />
-      <FontAwesomeIcon icon={faSolidStar} />
-      <FontAwesomeIcon icon={faSolidStar} />
-      <FontAwesomeIcon icon={faSolidStar} />
+      {starsJSX}
     </div>
   )
 
