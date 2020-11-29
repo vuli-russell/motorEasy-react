@@ -3,23 +3,34 @@ import styles from "./TyreList.module.scss";
 import TyreCard from "./TyreCard";
 
 const TyreList = (props) => {
-  const { tyreData, currentPage, setCurrentPage } = props;
+  const { tyreData, currentPage, setCurrentPage, isLoading } = props;
 
   const handleLoadMoreClick = () => {
     setCurrentPage(currentPage + 1);
   }
 
-  return (
-    <div className={styles.tyreList}>
-      {tyreData.length ? 
+  const getTyreListJSX = () => {
+    if(tyreData.length){
+      return(
         <>
           <div className={styles.cardGallery}>
             {tyreData.map(tyre => <TyreCard key={tyre._id} tyre={tyre} />)}
           </div>
           <button className={styles.button} onClick={handleLoadMoreClick}>Load More</button>
-        </>
-      :
-        <h2>No Tyres Found, Please try a different search</h2>}
+          <h2>{isLoading ? "Loading..." : null}</h2>
+       </>
+      )
+    }else {
+      return(
+        <h2>{isLoading ? "Loading..." : "No Tyres Found, Please try a different search"}</h2>
+      )
+    }
+  }
+
+
+  return (
+    <div className={styles.tyreList}>
+      {getTyreListJSX()}
     </div>
   );
 };

@@ -1,0 +1,23 @@
+@import "../../assets/styles/styles.scss";
+
+.searchBar {
+    margin: $base-spacing;
+    border-bottom: 1px solid black;
+
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+        > * {
+            font-size: $header-size;
+            margin: 10px;
+        }
+    }
+
+    &.searched{
+        form {
+            flex-direction: row;
+        }
+    }
+}

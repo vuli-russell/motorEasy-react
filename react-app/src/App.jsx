@@ -10,11 +10,13 @@ function App() {
   const [ currentPage, setCurrentPage ] = useState(1); 
   const [ searchStr, setSearchStr ] = useState(null);
   const [ hasSearched, setHasSearched ] = useState(false)
+  const [ isLoading, setIsLoading ] = useState(false)
 
   useEffect(() => {
     if(hasSearched){
+      setIsLoading(true)
       getTyres(searchStr,currentPage).then(data => {
-
+        setIsLoading(false)
         if(data==="error"){
           alert("Error Fetching Data");
         }else {
@@ -34,8 +36,8 @@ function App() {
   return (
     <>
       <Header />
-      <Search setSearchStr={setSearchStr} setHasSearched={setHasSearched} setCurrentPage={setCurrentPage}/>
-      <TyreList tyreData={tyreData} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+      <Search setSearchStr={setSearchStr} setHasSearched={setHasSearched} setCurrentPage={setCurrentPage} hasSearched={hasSearched}/>
+      {hasSearched ? <TyreList tyreData={tyreData} currentPage={currentPage} setCurrentPage={setCurrentPage} isLoading={isLoading}/> : null}
     </>
   );
 }
