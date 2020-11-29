@@ -4,13 +4,14 @@ import Header from "./components/Header";
 import Search from "./components/Search";
 import TyreList from "./components/TyreList";
 import { getTyres } from "./services/apiService";
+import showToast from "./services/showToastService";
 
 function App() {
   const [ tyreData, setTyreData ] = useState([]);
   const [ currentPage, setCurrentPage ] = useState(1); 
   const [ searchStr, setSearchStr ] = useState(null);
-  const [ hasSearched, setHasSearched ] = useState(false)
-  const [ isLoading, setIsLoading ] = useState(false)
+  const [ hasSearched, setHasSearched ] = useState(false);
+  const [ isLoading, setIsLoading ] = useState(false);
 
   useEffect(() => {
     if(hasSearched){
@@ -18,10 +19,10 @@ function App() {
       getTyres(searchStr,currentPage).then(data => {
         setIsLoading(false)
         if(data==="error"){
-          alert("Error Fetching Data");
+          showToast("Error Fetching Data");
         }else {
           if(data.length===0){
-            alert(currentPage===1 ? "No Tyres Found" : "No more Items To Load");
+            showToast(currentPage===1 ? "No Tyres Found" : "No more Items To Load");
           }
           if(currentPage===1){
             setTyreData(data)
