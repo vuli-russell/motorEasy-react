@@ -1,0 +1,44 @@
+.tyreCard {
+    background-color: rgb(236, 236, 236);
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;    
+    
+    .imgDiv {
+        display: flex;
+        justify-content: center;
+        img {
+            object-fit: contain;
+            border-radius: 10px;
+        }
+    }
+
+    .titleDiv {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        
+         > * {
+            margin: 10px;
+         }
+
+         > .price { 
+            text-align: center;
+        }
+    }
+
+    .amazonLink {
+        display: flex;
+        justify-content: center;
+
+        a {
+            background-color: #F9D537;   
+            padding: 10px;
+            margin: 10px;
+            border-radius: 10px;
+        }
+    }
+}
