@@ -15,7 +15,11 @@
         }
     }
 
-    &.searched{
+
+}
+
+@media only screen and (min-width: 768px)  {
+    .searchBar.searched{
         form {
             flex-direction: row;
         }
