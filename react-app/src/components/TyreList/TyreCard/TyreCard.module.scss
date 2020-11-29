@@ -2,6 +2,7 @@
     background-color: rgb(236, 236, 236);
     display: flex;
     flex-direction: column;
+    align-items: center;
     width: 300px;
     padding: 10px;
     margin: 10px;
@@ -13,6 +14,33 @@
         img {
             object-fit: contain;
             border-radius: 10px;
+        }
+    }
+
+    .starsDiv {
+        font-size: 20px;
+        position: relative;
+        margin: 10px;
+        display: flex;
+        height: 1em;
+        width: 5em;
+        
+        
+    
+        .fullStars, .emptyStars {
+            color: black;
+            position: absolute;
+            overflow: hidden;
+            white-space: nowrap; 
+            
+            > * {
+                width: 1em;
+            }
+        }
+
+        .fullStars {
+            color: #F9D537;
+            z-index: 2;
         }
     }
 
