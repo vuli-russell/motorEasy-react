@@ -10,14 +10,19 @@ to run:
 React App:
 - yarn install
 - create .env file with:
+
     REACT_APP_API_URL = {your local verison of API or Node API above}
+    
 -yarn run start
 
 Node API:
 - yarn install
-- create .env file with following read only credentials:
+- create .env file with:
+
     MONGO_USER = username
+    
     MONGO_PW = password
+    
 - node app.js
 
 
