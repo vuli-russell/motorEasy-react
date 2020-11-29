@@ -13,7 +13,7 @@ React App:
 
     REACT_APP_API_URL = {your local verison of API or Node API above}
     
--yarn run start
+- yarn run start
 
 Node API:
 - yarn install
